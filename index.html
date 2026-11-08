@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUD Mate — Aggiornamenti</title>
+<style>
+body{margin:0;min-height:100vh;background:#07121a;color:#ebf7fc;font:16px/1.6 system-ui,Arial,sans-serif;display:grid;place-items:center}
+main{max-width:530px;margin:24px;padding:32px;border:1px solid #164551;border-radius:20px;background:#0a202b}
+h1{font-size:30px;margin:0 0 10px}p{color:#b9ced8}a{color:#45d6e5}
+</style>
+</head>
+<body><main>
+<h1>HUD Mate</h1>
+<p>Canale pubblico di aggiornamento APK. Il codice sorgente e la chiave di firma restano nel repository privato.</p>
+<p id="latest">Nessun APK pubblicato: configurazione iniziale in corso.</p>
+<script>
+fetch('latest.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{
+if(data&&data.version&&data.apk==='HUD-Mate-latest.apk')document.getElementById('latest').innerHTML='Versione disponibile: <strong>'+String(data.version).replace(/[&<>"]/g,'')+'</strong>. <a href="HUD-Mate-latest.apk">Scarica APK</a>';
+}).catch(()=>{});
+</script>
+</main></body></html>
